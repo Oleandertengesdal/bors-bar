@@ -13,9 +13,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Børsbar — The Stock Market Bar",
+  title: {
+    default: "Børsbar — The Stock Market Bar",
+    template: "%s | Børsbar",
+  },
   description:
-    "Dynamic pricing platform for events where beverage prices fluctuate in real-time based on demand.",
+    "Dynamisk prisplattform for arrangementer der drikkeprisene endres i sanntid basert på etterspørsel. Perfekt for studentfester og sosiale arrangementer.",
+  keywords: [
+    "børsbar",
+    "stock market bar",
+    "dynamisk prising",
+    "studentfest",
+    "arrangement",
+    "drikkepriser",
+    "børskveld",
+  ],
+  authors: [{ name: "Børsbar" }],
+  openGraph: {
+    type: "website",
+    locale: "nb_NO",
+    siteName: "Børsbar",
+    title: "Børsbar — The Stock Market Bar",
+    description:
+      "Dynamisk prisplattform der drikkeprisene endres i sanntid basert på etterspørsel.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Børsbar — The Stock Market Bar",
+    description:
+      "Dynamisk prisplattform der drikkeprisene endres i sanntid basert på etterspørsel.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
 };
 
 export default function RootLayout({
@@ -24,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="nb">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

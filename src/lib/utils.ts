@@ -1,4 +1,4 @@
-import { type ClassValue, clsx } from "clsx";
+import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -7,9 +7,12 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Format price from øre (integer) to NOK display string.
- * Example: 4500 → "45,00 kr" (Norwegian) or "45.00 kr" (English)
+ * Example: 4500 → "45 kr"
  */
-export function formatPrice(priceInOre: number, locale: string = "nb-NO"): string {
+export function formatPrice(
+  priceInOre: number,
+  locale: string = "nb-NO"
+): string {
   const priceInNOK = priceInOre / 100;
   return new Intl.NumberFormat(locale, {
     style: "currency",
@@ -22,13 +25,16 @@ export function formatPrice(priceInOre: number, locale: string = "nb-NO"): strin
 /**
  * Calculate percentage price change from base.
  */
-export function priceChangePercent(currentPrice: number, basePrice: number): number {
+export function priceChangePercent(
+  currentPrice: number,
+  basePrice: number
+): number {
   if (basePrice === 0) return 0;
   return ((currentPrice - basePrice) / basePrice) * 100;
 }
 
 /**
- * Generate a random 4-digit PIN, avoiding collisions with existing PINs.
+ * Generate a random 4-digit PIN, avoiding collisions.
  */
 export function generatePin(existingPins: Set<string>): string {
   let pin: string;
